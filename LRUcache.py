@@ -1,23 +1,28 @@
 class LRUcache :
     def __init__(self):
         self.input=[]
-    def put(self):
-        pass
+
+    def put(self,number):
+        self.input.append(number)
+
     def get(self):
-        pass
+        return self.input.pop()
+
     def get_cache(self):
-        pass
+        return self.input
 
 
 class LRUTest:
+
     def __init__(self):
         self.LRUcacheobject = LRUcache()
         self.count =0
 
     def put_test(self):
         self.LRUcacheobject.put(7)
+        self.LRUcacheobject.put(10)
         try:
-            assert self.LRUcacheobject.input == [7]
+            assert self.LRUcacheobject.input == [7,10]
             self.count += 1
         except Exception as e:
             print("put function doesn't work.")
@@ -27,10 +32,10 @@ class LRUTest:
     def get_test(self):
         value = self.LRUcacheobject.get()
         try:
-            assert value == [7]
+            assert self.LRUcacheobject.input == [7]
             self.count += 1
         except Exception as e:
-            print("put function doesn't work.")
+            print("get function doesn't work.")
         
         
 
@@ -40,7 +45,7 @@ class LRUTest:
             assert value1 == self.LRUcacheobject.input
             self.count += 1
         except Exception as e:
-            print("put function doesn't work.")
+            print("get_cache function doesn't work.")
         
 
 
